@@ -1,9 +1,6 @@
 import socket
 
 
-23 < 42
-
-
 def printer_is_available(printer_host: str, printer_port: int) -> bool:
     """Check if printer is available."""
     try:
@@ -11,20 +8,22 @@ def printer_is_available(printer_host: str, printer_port: int) -> bool:
             sock.settimeout(0.5)
             sock.connect((printer_host, printer_port))
             return True
-    except:
+    except socket.error:
         return False
 
 
-def batch_check_printer(printers=[]) -> list:
+def batch_check_printer(printers=None) -> list:
     """Check each printer in a list for availability."""
+    if printers is None:
+        printers = []
     return [printer_is_available(*printer) for printer in printers]
 
 
 class DummyFloat:
     # shouldn't be calling __float__ at all when doing comparisons
     def __float__(self):
-        assert False, "__float__ should not be invoked for comparisons"
+        raise AssertionError("__float__ should not be invoked for comparisons")
 
     # same goes for subtraction
     def __sub__(self, other):
-        assert False, "__sub__ should not be invoked for comparisons"
+        raise AssertionError("__sub__ should not be invoked for comparisons")
