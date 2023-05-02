@@ -17,7 +17,7 @@ def get_config():
     pass
 
 def hurdle():
-    while (at_goal()== False):
+    while (at_goal() == False):
         while (front_is_clear() ==  True):
             move()
         jump()
