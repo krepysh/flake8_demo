@@ -1,7 +1,7 @@
-# flake8: noqa
-
 def jump():
     pass
+
+
 def move():
     pass
 
@@ -13,11 +13,13 @@ def at_goal():
 def front_is_clear():
     pass
 
+
 def get_config():
     pass
 
+
 def hurdle():
-    while (at_goal()== False):
-        while (front_is_clear() ==  True):
+    while not at_goal():
+        while front_is_clear():
             move()
         jump()
