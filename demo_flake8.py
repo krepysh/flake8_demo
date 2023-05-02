@@ -1,4 +1,5 @@
 # flake8: noqa
+
 def jump():
     pass
 def move():
