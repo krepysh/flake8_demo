@@ -23,4 +23,3 @@ def hurdle():
         while front_is_clear():
             move()
         jump()
-
