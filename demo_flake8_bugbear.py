@@ -11,12 +11,14 @@ def printer_is_available(printer_host: str, printer_port: int) -> bool:
             sock.settimeout(0.5)
             sock.connect((printer_host, printer_port))
             return True
-    except:
+    except Exception:
         return False
 
 
-def batch_check_printer(printers=[]) -> list:
+def batch_check_printer(printers=None):
     """Check each printer in a list for availability."""
+    if printers is None:
+        printers = []
     return [printer_is_available(*printer) for printer in printers]
 
 
